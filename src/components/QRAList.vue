@@ -6,11 +6,7 @@
     <div class="body">
       <template v-for="(record, index) in records">
         <template v-if="record.record_type === 'section'">
-          <div :class="record.record_type" :key="index">
-            <div>{{ record.label }}</div>
-            <div>{{ record.requirement }}</div>
-            <div class="score" :style="getScoreStyle(record.score)">{{ record.score }}</div>
-          </div>
+          <QRASection :record="record" :key="index" />
         </template>
         <template v-else>
           <div :class="record.record_type" :key="index">
@@ -18,14 +14,8 @@
               <div style="width: 100px">{{ record.label }}</div>
               <div>{{ record.requirement }}</div>
             </div>
-            <div>{{ record.action }}</div>
-            <div>{{ record.review_period }}</div>
-            <div>{{ record.review_date }}</div>
-            <div>{{ record.assess }}</div>
-            <div>{{ record.score }}</div>
-            <div>{{ record.next_review_date }}</div>
-            <div>{{ record.comments }}</div>
           </div>
+          <QRAActions :actions="record.actions" :key="record.label"> </QRAActions>
         </template>
       </template>
     </div>
@@ -33,22 +23,16 @@
 </template>
 
 <script>
+
+import QRAActions from './QRAActions';
+import QRASection from './QRASection';
+
 export default {
   name: "QRAList",
+  components: { QRAActions, QRASection },
   props: {
     title: String,
     records: [],
-  },
-  methods: {
-    getScoreStyle(score) {
-      const myScore = parseInt(score, 10);
-      if (myScore > 0) {
-        return "background-color: red";
-      } else if (myScore < 0) {
-        return "background-color: green";
-      }
-      return "background-color: orange";
-    },
   },
 };
 </script>
@@ -56,7 +40,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 div.body {
-  font-size: 10px;
+  font-size: 12px;
   margin: 1%;
   text-align: left;
 }
@@ -72,21 +56,8 @@ table.qra th {
   padding: 8px;
 }
 
-div.section {
-  background-color: #ddd;
-  border: 2px grey solid;
-  border-radius: 25px;
-  padding: 5px;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-evenly;
-}
-
-div.section > div {
-  margin: 1%;
-}
-
 div.row {
+  margin-top: 1%;
   background-color: white;
   border: 1px lightgrey solid;
   border-radius: 25px;
@@ -94,20 +65,11 @@ div.row {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-evenly;
+  box-shadow: 3px 3px 5px grey;
 }
 
 div.row > div {
   margin: 1%;
-}
-
-div.score {
-  font-size: 20px;
-  border: 2px black solid;
-  border-radius: 50%;
-  color: white;
-  height: 20px;
-  width: 20px;
-  text-align: center;
 }
 
 div.row-head {

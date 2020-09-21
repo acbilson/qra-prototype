@@ -1,9 +1,20 @@
 version: '3.7'
 services:
 
-  qra:
+  qra-dev:
     image: abilson/qra-node:lts-alpine
-    build: .
-    container_name: qra
+    build:
+      context: .
+      target: dev
+    container_name: qra-dev
     ports:
       - "8080:8080"
+    volumes:
+      - ./src:/home/qra/src/src
+
+  qra-prod:
+    image: abilson/qra-node:lts-alpine
+    build:
+      context: .
+      target: build
+    container_name: qra-prod
