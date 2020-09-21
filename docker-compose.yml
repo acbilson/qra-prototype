@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+
+  qra:
+    image: abilson/qra-node:lts-alpine
+    build: .
+    container_name: qra
+    ports:
+      - "8080:8080"
