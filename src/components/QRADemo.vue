@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import QRATable from "./QRATable";
-import QRAList from "./QRAList";
+import QRATable from "./overview/QRATable";
+import QRAList from "./detail/QRAList";
 
 export default {
   name: "QRADemo",
@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       picked: 'excel',
-      title: "Qualitative Risk Analysis",
+      title: "Qualitative Risk Analysis - Capital",
       records: [],
       listRecords: []
     };

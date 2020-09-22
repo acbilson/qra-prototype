@@ -16,11 +16,11 @@ export default {
     getScoreStyle(score) {
       const myScore = parseInt(score, 10);
       if (myScore > 0) {
-        return "background-color: red";
+        return "background-color: #b52025";
       } else if (myScore < 0) {
-        return "background-color: green";
+        return "background-color: #5a7f38";
       }
-      return "background-color: orange";
+      return "background-color: #e3a224";
     },
   }
 };
@@ -29,6 +29,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 div.section {
+  font-size: 18px;
   margin-top: 1%;
   background-color: #ddd;
   border: 1px grey solid;

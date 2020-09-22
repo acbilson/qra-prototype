@@ -11,7 +11,7 @@
               <div><label>Review Date:</label> {{ action.review_date }}</div>
               <div><label>Next Review Date:</label> {{ action.next_review_date }}</div>
             </div>
-            <div><label>Comments:</label> {{ action.comments }}</div>
+            <div><label>Comments:</label><br /><textarea v-model="action.comments"></textarea></div>
           </div>
       </template>
   </div>
@@ -28,15 +28,15 @@ export default {
       let style = '';
       switch (assess) {
         case 'ST':
-          style = 'background-color: green; color: yellow;';
+          style = 'background-color: #5a7f38; color: yellow;';
           break;
 
         case 'SA':
-          style = 'background-color: yellow; color: black;';
+          style = 'background-color: #e3a224; color: black;';
           break;
 
         case 'NI':
-          style = 'background-color: red; color: black;';
+          style = 'background-color: #b52025; color: white;';
           break;
       
         default:
@@ -98,4 +98,9 @@ div.qra-action {
   padding: 10%;
   border-radius: 50%;
  }
+
+textarea {
+  width: 100%;
+}
+
 </style>

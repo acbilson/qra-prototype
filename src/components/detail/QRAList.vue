@@ -15,7 +15,10 @@
               <div>{{ record.requirement }}</div>
             </div>
           </div>
-          <QRAActions :actions="record.actions" :key="record.label"> </QRAActions>
+          <QRAActions :actions="record.actions" :key="index"> </QRAActions>
+        <div class="buttons" :key="index">
+          <button :id="record.label" type="button" v-on:click="addAction">Add Action</button>
+        </div>
         </template>
       </template>
     </div>
@@ -34,6 +37,14 @@ export default {
     title: String,
     records: [],
   },
+  methods: {
+    addAction(event) {
+      const actionsDiv = event.target.parentNode.previousSibling;
+      const latestAction = actionsDiv.lastChild.cloneNode(true);
+      latestAction.firstChild.firstChild.innerHTML = "Enter New Action";
+      actionsDiv.lastChild.insertAdjacentElement('afterend', latestAction);
+    }
+  }
 };
 </script>
 
@@ -57,6 +68,7 @@ table.qra th {
 }
 
 div.row {
+  font-size: 14px;
   margin-top: 1%;
   background-color: white;
   border: 1px lightgrey solid;
@@ -76,5 +88,12 @@ div.row-head {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+}
+
+div.buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  margin: 1%;
 }
 </style>

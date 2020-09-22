@@ -39,7 +39,8 @@ div.app {
 }
 
 div.sidenav {
-  background-color: grey;
+  background-color: #4d4d4d;
+  color: white;
   width: 15%;
   padding-left: 1%;
   display: flex;
@@ -47,7 +48,7 @@ div.sidenav {
 }
 
 div.content {
-  background-color: lightgrey;
+  background-color: #ebebeb;
   width: 85%;
   display: flex;
   flex-flow: column nowrap;

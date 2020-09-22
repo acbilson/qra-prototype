@@ -1,0 +1,3 @@
+(A) implement Vue routing so I can support several views with button clicks
+(A) cause actions to accordion below requirements
+(A) make make review date editable and set next review date accordingly
