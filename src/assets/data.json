@@ -1,6 +1,7 @@
 {
     "data": [
         {
+        "id": "285",
         "record_type": "section",
         "label": "POLICY",
         "requirement": "Capital policies and strategic plans are comprehensive and consistent with the bank's overall risk appetite and complexity of operations. The impact of reversing or modifying strategic decisions is fully assessed as part of the planning process.",
@@ -13,6 +14,7 @@
         "comments": ""
         },
         {
+        "id": "2394",
         "record_type": "row",
         "label": "RASL-1",
         "requirement": "Adequacy of strategic and succession planning processes.",
@@ -25,6 +27,7 @@
         "comments": "These are some comments that I'm making here"
         },
         {
+        "id": "258",
         "record_type": "row",
         "label": "RASL-2",
         "requirement": "Board oversight of and engagement on strategic initiatives.",
@@ -37,6 +40,7 @@
         "comments": ""
         },
         {
+        "id": "1182",
         "record_type": "row",
         "label": "RASL-2",
         "requirement": "Board oversight of and engagement on strategic initiatives.",
@@ -49,6 +53,7 @@
         "comments": ""
         },
         {
+        "id": "937",
         "record_type": "row",
         "label": "RASL-2",
         "requirement": "Board oversight of and engagement on strategic initiatives.",
@@ -61,6 +66,7 @@
         "comments": ""
         },
         {
+        "id": "23",
         "record_type": "section",
         "label": "PROCESS",
         "requirement": "Management and the board have a well-defined planning process. Initiatives are supported by sound due diligence and effective risk management systems, which are an integral part of strategic planning. MIS effectively support strategic direction and initiatives. Management is aware of and effectively incorporates technology management into strategic plans.",
@@ -73,6 +79,7 @@
         "comments": ""
         },
         {
+        "id": "2575",
         "record_type": "row",
         "label": "RASL-4",
         "requirement": "Priority and compatibility of personnel, technology, and capital resources allocation with strategic initiatives.",
@@ -85,6 +92,7 @@
         "comments": ""
         },
         {
+        "id": "483",
         "record_type": "row",
         "label": "RASL-5",
         "requirement": "A system for documenting strategic resource needs from a personnel, infrastructure, and technology standpoint has been developed and is reviewed at least annually.",
@@ -97,16 +105,127 @@
         "comments": "I've got some more comments to make here. A lot more than I sometimes have. Yes, very many."
         },
         {
+        "id": "112",
         "record_type": "row",
         "label": "RASL-6",
         "requirement": "Past performance in offering new, modified, or expanded products or services, managing third-party relationships, and evaluating potential and consummated acquisitions or divestitures",
         "action": "A process has been established to ensure that new and/or expanded products and services are properly vetted for feasibility and profitability.",
-        "review_period": "Ongoing",
+        "review_period": "Quarterly",
+        "review_date": "",
+        "assess": "",
+        "score": "",
+        "next_review_date": "",
+        "comments": ""
+        },
+        {
+        "id": "1784",
+        "record_type": "row",
+        "label": "RASL-7",
+        "requirement": "Performance in implementing new technology or systems.",
+        "action": "The bank's MIS infrastructure is reviewed annually to ensure its has the capability to monitor and report on strategic objectives, including changes in external business and economic conditions.",
+        "review_period": "Annual",
+        "review_date": "",
+        "assess": "",
+        "score": "",
+        "next_review_date": "",
+        "comments": ""
+        },
+        {
+        "id": "275",
+        "record_type": "row",
+        "label": "RASL-8",
+        "requirement": "Effectiveness of bank management’s methods of communicating, implementing, and modifying strategic plans, and consistency with stated risk appetite and policies.",
+        "action": "",
+        "review_period": "Annual",
+        "review_date": "",
+        "assess": "",
+        "score": "",
+        "next_review_date": "",
+        "comments": ""
+        },
+        {
+        "id": "27456",
+        "record_type": "section",
+        "label": "PERSONNEL",
+        "requirement": "Management and the board have a successful record in accomplishing stated strategic goals. Strategic goals are effectively communicated and evident throughout the organization.",
+        "action": "",
+        "review_period": "",
+        "review_date": "",
+        "assess": "",
+        "score": "0",
+        "next_review_date": "",
+        "comments": ""
+        },
+        {
+        "id": "75",
+        "record_type": "row",
+        "label": "RASL-3",
+        "requirement": "Board and bank management’s ability to respond to changes in the banking industry and operating environment.",
+        "action": "At least annually, the board will review management's expertise depth and succession to ensure that adequate capabilities exist to achieve strategic activities in compliance with relevant laws and regulations.",
+        "review_period": "Annual",
+        "review_date": "",
+        "assess": "",
+        "score": "",
+        "next_review_date": "",
+        "comments": ""
+        },
+        {
+        "id": "683",
+        "record_type": "row",
+        "label": "RASL-10",
+        "requirement": "Responsiveness to identified deficiencies in internal control, risk management, and compliance systems.",
+        "action": "Management reviews the audit and regulatory reports to ensure that identified deficiencies in strategic or capital planning are promptly addressed.",
+        "review_period": "Quarterly",
+        "review_date": "",
+        "assess": "",
+        "score": "",
+        "next_review_date": "",
+        "comments": ""
+        },
+        {
+        "id": "19485",
+        "record_type": "section",
+        "label": "CONTROLS",
+        "requirement": "Internal Controls are designed to capture and review initiatives that emanate from the strategic planning process.  New products and services or changes in risk tolerance or strategic direction should be noted and consider in the internal control process.  Capital adequacy and compliance with outlined objectives are priorities of internal control activities.",
+        "action": "",
+        "review_period": "",
+        "review_date": "",
+        "assess": "",
+        "score": "1",
+        "next_review_date": "",
+        "comments": ""
+        },
+        {
+        "id": "37",
+        "record_type": "row",
+        "label": "RASL-9",
+        "requirement": "Adequacy and independence of controls to monitor business decisions.",
+        "action": "The audit program is reviewed annually to ensure coverage of the board's strategic and capital directives.",
+        "review_period": "Annual",
+        "review_date": "",
+        "assess": "",
+        "score": "",
+        "next_review_date": "",
+        "comments": ""
+        },
+        {
+        "id": "6734",
+        "record_type": "row",
+        "label": "RASL-9",
+        "requirement": "Adequacy and independence of controls to monitor business decisions.",
+        "action": "The audit program  verifies the accuracy of the capital accounts and regulatoryreports; assesses the appropriateness, accuracy, and timeliness of reports produced for the board and executive management; and evaluates the reasonableness of capital planning. (ED11)",
+        "review_period": "Annual",
         "review_date": "",
         "assess": "",
         "score": "",
         "next_review_date": "",
         "comments": ""
         }
+
+
+
+
+
+
     ]
 }

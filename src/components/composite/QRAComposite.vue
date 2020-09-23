@@ -1,7 +1,7 @@
 <template>
   <div class="qra-table">
     <div class="title">
-      <h1>Qualitative Risk Capital Overview</h1>
+      <h1>Risk Model Composite</h1>
     </div>
     <div class="body">
       <table class="qra">
@@ -41,7 +41,7 @@
 import data from '../../assets/data.json';
 
 export default {
-  name: 'QRATable',
+  name: 'QRAComposite',
   data() {
     return {
       records: data.data
@@ -55,6 +55,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 div.title {
   margin-left: 1%;
 }

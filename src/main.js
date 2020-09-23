@@ -4,6 +4,7 @@ import App from './App.vue'
 
 import QRAList from './components/detail/QRAList';
 import QRATable from './components/overview/QRATable';
+import QRAComposite from './components/composite/QRAComposite';
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -11,7 +12,9 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
     { path: '/detail', component: QRAList },
-    { path: '/overview', component: QRATable }
+    { path: '/overview', component: QRATable },
+    { path: '/composite', component: QRAComposite },
+    { path: '*', component: QRAList }
   ]
 });
 

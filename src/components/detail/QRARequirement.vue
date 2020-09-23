@@ -2,6 +2,12 @@
   <div class="requirement">
     <div style="width: 100px">{{ record.label }}</div>
     <div>{{ record.requirement }}</div>
+    <div class="buttons">
+      <div><button @click="minimizeActions(record.label)">_</button></div>
+      <div><button @click="toggleActions(record.label)">...</button></div>
+      <div><button @click="addActions(record.label)">+</button></div>
+      <div v-if="record.edit"><button @click="removeRequirement(record.label)">X</button></div>
+    </div>
   </div>
 </template>
 
@@ -10,6 +16,20 @@ export default {
   name: "QRARequirement",
   props: {
     record: {},
+  },
+  methods: {
+    toggleActions(label) {
+      this.$emit('toggle', label);
+    },
+    minimizeActions(label) {
+      this.$emit('minimize', label);
+    },
+    addActions(label) {
+      this.$emit('add', label);
+    },
+    removeRequirement(label) {
+      this.$emit('remove', label);
+    }
   }
 };
 </script>
@@ -32,5 +52,10 @@ div.requirement {
 
 div.requirement>div {
   margin: 1%;
+}
+
+div.buttons {
+  display: flex;
+  flex-flow: row nowrap;
 }
 </style>

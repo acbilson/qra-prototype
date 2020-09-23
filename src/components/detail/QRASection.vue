@@ -1,14 +1,28 @@
 <template>
-  <div class="section">
+  <div :style="getScoreStyle(record.score)" class="section">
     <div>{{ record.label }}</div>
     <div>{{ record.requirement }}</div>
-    <div class="score" :style="getScoreStyle(record.score)">{{ record.score }}</div>
+    <div>
+      <select name="score" v-model="record.score">
+        <option
+          v-for="score in scores"
+          :selected="score == record.score ? true : false"
+          :key="score"
+        >{{score}}</option>
+      </select>
+      <button @click="addRequirement(record.label)">+</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "QRASection",
+  data() {
+    return {
+      scores: ["1", "0", "-1"],
+    };
+  },
   props: {
     record: {},
   },
@@ -16,13 +30,16 @@ export default {
     getScoreStyle(score) {
       const myScore = parseInt(score, 10);
       if (myScore > 0) {
-        return "background-color: #b52025";
+        return "border-top: 6px #b52025 solid";
       } else if (myScore < 0) {
-        return "background-color: #5a7f38";
+        return "border-top: 6px #5a7f38 solid";
       }
-      return "background-color: #e3a224";
+      return "border-top: 6px #e3a224 solid";
     },
-  }
+    addRequirement(label) {
+      this.$emit("add", label);
+    },
+  },
 };
 </script>
 

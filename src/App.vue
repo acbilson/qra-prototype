@@ -15,6 +15,7 @@
       <div class="links">
         <router-link to="/overview" tag="button">Go To Overview</router-link>
         <router-link to="/detail" tag="button">Go To Detail</router-link>
+        <router-link to="/composite" tag="button">Go To Composite</router-link>
       </div>
       <router-view></router-view>
       <div class="footer">
@@ -77,5 +78,9 @@ div.footer {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
+}
+
+div.links > button {
+  margin-left: 1%;
 }
 </style>
