@@ -2,14 +2,45 @@
   <div class="qra-actions">
       <template v-for="(action, index) in actions">
           <div class="qra-action" :key="index">
-            <div class="qra-action-top">
-              <div>{{ action.action }}</div>
-              <div><span class="assess" :style="getAssessStyle(action.assess)">{{ action.assess }}</span></div>
+            <div :style="getAssessStyle(action.assess)" class="qra-action-top">
+              <div class="assess">
+                <select name="assess" v-model="action.assess">
+                  <option
+                    v-for="val in assessments"
+                    :selected="val == action.assess ? true : false"
+                    :key="val">
+                    {{val}}
+                  </option>
+                </select>
+              </div>
+              <div v-if="!action.action.edit">
+                <div>{{ action.action.text }}</div>
+              </div>
+              <div style="display: contents;" v-else>
+                <textarea v-model="action.action.text" />
+                </div>
+              <div><button :id="index">X</button></div>
             </div>
             <div class="qra-action-mid">
-              <div><label>Review Period:</label> {{ action.review_period }}</div>
-              <div><label>Review Date:</label> {{ action.review_date }}</div>
-              <div><label>Next Review Date:</label> {{ action.next_review_date }}</div>
+              <div>
+                <label>Review Period:</label>
+                <select name="review_period" v-model="action.review_period">
+                  <option
+                    v-for="period in periods"
+                    :selected="period == action.review_period ? true : false"
+                    :key="period">
+                    {{period}}
+                  </option>
+                </select>
+              </div>
+              <div>
+                <label>Review Date:</label>
+                <input type="date" :value="parseDate(action.review_date)" @input="myDate = $event.target.valueAsDate" />
+              </div>
+              <div>
+                <label>Next Review Date:</label>
+                <input type="date" :value="parseDate(action.next_review_date)" @input="myDate = $event.target.valueAsDate" />
+                </div>
             </div>
             <div><label>Comments:</label><br /><textarea v-model="action.comments"></textarea></div>
           </div>
@@ -20,23 +51,29 @@
 <script>
 export default {
   name: "QRAActions",
+  data() {
+    return {
+      periods: ['Annual', 'Quarterly'],
+      assessments: ['ST', 'SA', 'NI']
+    }
+  },
   props: {
-    actions: [],
+    actions: Array,
   },
   methods: {
     getAssessStyle(assess) {
       let style = '';
       switch (assess) {
         case 'ST':
-          style = 'background-color: #5a7f38; color: yellow;';
+          style = 'border-top: 6px #5a7f38 solid';
           break;
 
         case 'SA':
-          style = 'background-color: #e3a224; color: black;';
+          style = 'border-top: 6px #e3a224 solid;';
           break;
 
         case 'NI':
-          style = 'background-color: #b52025; color: white;';
+          style = 'border-top: 6px #b52025 solid;';
           break;
       
         default:
@@ -44,6 +81,10 @@ export default {
           break;
       }
       return style;
+    },
+    parseDate(date) {
+      if (!date) {return date}
+      return new Date(date).toISOString().split('T')[0];
     }
   }
 };
@@ -67,7 +108,7 @@ div.qra-action {
  }
 
  div.qra-action>div {
-   margin-top: 0.5%;
+   padding-top: 1%;
  }
 
  div.qra-action-top {
@@ -85,18 +126,15 @@ div.qra-action {
  }
 
  div.qra-action-mid>div {
-   margin-right: 5%;
  }
  
  label {
    font-weight: bold;
+   margin-right: 3%;
  }
 
- span.assess {
-  width: 100px;
-  font-size: 16px;
-  padding: 10%;
-  border-radius: 50%;
+ div.assess {
+   margin-right: 1%;
  }
 
 textarea {

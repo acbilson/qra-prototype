@@ -1,7 +1,7 @@
 <template>
   <div class="qra-table">
     <div class="title">
-      <h1>{{ this.title }}</h1>
+      <h1>Qualitative Risk Capital Overview</h1>
     </div>
     <div class="body">
       <table class="qra">
@@ -38,11 +38,17 @@
 </template>
 
 <script>
+import data from '../../assets/data.json';
+
 export default {
   name: 'QRATable',
+  data() {
+    return {
+      records: data.data
+    }
+  },
   props: {
     title: String,
-    records: []
   },
 }
 </script>

@@ -12,7 +12,11 @@
         <p>Header2</p>
         <p>Header3</p>
       </div>
-      <QRADemo />
+      <div class="links">
+        <router-link to="/overview" tag="button">Go To Overview</router-link>
+        <router-link to="/detail" tag="button">Go To Detail</router-link>
+      </div>
+      <router-view></router-view>
       <div class="footer">
         <p>Footer1</p>
         <p>Footer2</p>
@@ -23,11 +27,16 @@
 </template>
 
 <script>
-import QRADemo from "./components/QRADemo";
+import data from "./assets/data.json";
 
 export default {
   name: "App",
-  components: { QRADemo },
+  data() {
+    return {
+      data: data.data
+    }
+  },
+  components: { },
 };
 </script>
 
@@ -68,9 +77,5 @@ div.footer {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
-}
-
-div.title {
-  margin: 1%;
 }
 </style>

@@ -1,24 +1,23 @@
 <template>
   <div class="qra-list">
     <div class="title">
-      <h1>{{ this.title }}</h1>
+      <h1>Qualitative Risk Capital Details</h1>
     </div>
     <div class="body">
       <template v-for="(record, index) in records">
         <template v-if="record.record_type === 'section'">
-          <QRASection :record="record" :key="index" />
+          <QRASection :record="record" :key="record.label" />
         </template>
         <template v-else>
-          <div :class="record.record_type" :key="index">
-            <div class="row-head">
-              <div style="width: 100px">{{ record.label }}</div>
-              <div>{{ record.requirement }}</div>
-            </div>
+          <QRARequirement :record="record" :key="index"></QRARequirement>
+          <QRAActions :actions="record.actions" :key="record.label+'_'+index"></QRAActions>
+          <div class="buttons" :key="record.label">
+            <button
+              :id="record.label"
+              type="button"
+              v-on:click="addAction(record.label, $event)"
+            >Add Action</button>
           </div>
-          <QRAActions :actions="record.actions" :key="index"> </QRAActions>
-        <div class="buttons" :key="index">
-          <button :id="record.label" type="button" v-on:click="addAction">Add Action</button>
-        </div>
         </template>
       </template>
     </div>
@@ -26,25 +25,101 @@
 </template>
 
 <script>
-
-import QRAActions from './QRAActions';
-import QRASection from './QRASection';
+import data from "../../assets/data.json";
+import QRAActions from "./QRAActions";
+import QRARequirement from "./QRARequirement";
+import QRASection from "./QRASection";
 
 export default {
   name: "QRAList",
-  components: { QRAActions, QRASection },
-  props: {
-    title: String,
-    records: [],
+  components: {
+    QRAActions,
+    QRASection,
+    QRARequirement,
+  },
+  data() {
+    return {
+      records: data.data,
+    };
   },
   methods: {
-    addAction(event) {
-      const actionsDiv = event.target.parentNode.previousSibling;
-      const latestAction = actionsDiv.lastChild.cloneNode(true);
-      latestAction.firstChild.firstChild.innerHTML = "Enter New Action";
-      actionsDiv.lastChild.insertAdjacentElement('afterend', latestAction);
-    }
-  }
+    addAction(label, event) {
+      console.log(label);
+      console.log(event.target);
+
+      const defaultAction = {
+        record_type: "row",
+        label: label,
+        requirement: "",
+        action: { text: "This is a new action", edit: true },
+        review_period: "",
+        review_date: "",
+        assess: "",
+        score: "",
+        next_review_date: "",
+        comments: "",
+      };
+
+      const selectedRecord = this.records.find((r) => r.label == label);
+      selectedRecord.actions.push(defaultAction);
+    },
+    transformRecords(records) {
+      const labels = records.map((r) => r.label);
+      const uniqueLabels = [...new Set(labels)];
+
+      const listRecords = uniqueLabels.map((l) => {
+        const recordsByLabel = records.filter((r) => r.label == l);
+
+        const first = recordsByLabel[0];
+
+        let recordObj = {
+          record_type: first.record_type,
+          label: first.label,
+          requirement: first.requirement,
+          score: first.score,
+          actions: [],
+        };
+
+        if (recordsByLabel.length > 1) {
+          let actions = recordsByLabel.map((rl) => {
+            return {
+              action: {
+                text: rl.action,
+                edit: false
+              },
+              review_period: first.review_period,
+              review_date: first.review_date,
+              assess: first.assess,
+              next_review_date: first.next_review_date,
+              comments: first.comments,
+            };
+          });
+          recordObj.actions = actions;
+        } else {
+          recordObj.actions = [
+            {
+              action: {
+                text: first.action,
+                edit: false
+              },
+              review_period: first.review_period,
+              review_date: first.review_date,
+              assess: first.assess,
+              next_review_date: first.next_review_date,
+              comments: first.comments,
+            },
+          ];
+        }
+
+        return recordObj;
+      });
+
+      return listRecords;
+    },
+  },
+  created() {
+    this.records = this.transformRecords(this.records);
+  },
 };
 </script>
 
@@ -54,40 +129,6 @@ div.body {
   font-size: 12px;
   margin: 1%;
   text-align: left;
-}
-
-table.qra {
-  background-color: white;
-  overflow-x: auto;
-}
-
-table.qra td,
-table.qra th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-div.row {
-  font-size: 14px;
-  margin-top: 1%;
-  background-color: white;
-  border: 1px lightgrey solid;
-  border-radius: 25px;
-  padding: 5px;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-evenly;
-  box-shadow: 3px 3px 5px grey;
-}
-
-div.row > div {
-  margin: 1%;
-}
-
-div.row-head {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
 }
 
 div.buttons {
